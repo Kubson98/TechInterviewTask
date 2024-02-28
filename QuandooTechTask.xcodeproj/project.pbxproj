@@ -32,6 +32,7 @@
 		3B4427212B8F1FC10008F3C2 /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427202B8F1FC10008F3C2 /* HomeViewModelTest.swift */; };
 		3B4427262B8F69270008F3C2 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427252B8F69260008F3C2 /* NoDataView.swift */; };
 		3B4427282B8F6D1F0008F3C2 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427272B8F6D1E0008F3C2 /* SpinnerViewController.swift */; };
+		3B44272A2B8FC7F80008F3C2 /* UserPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427292B8FC7F80008F3C2 /* UserPostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		3B4427202B8F1FC10008F3C2 /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
 		3B4427252B8F69260008F3C2 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		3B4427272B8F6D1E0008F3C2 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		3B4427292B8FC7F80008F3C2 /* UserPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				3B4426EA2B8BD4230008F3C2 /* PostTableViewCell.swift */,
 				3B4426E22B8ACA730008F3C2 /* UserPostsViewController.swift */,
 				3B44270F2B8E35910008F3C2 /* UserPostsViewModel.swift */,
+				3B4427292B8FC7F80008F3C2 /* UserPostView.swift */,
 			);
 			path = PostsView;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				3B4427022B8CC7630008F3C2 /* User+Extension.swift in Sources */,
 				3B4426CE2B8AC04A0008F3C2 /* HomeViewController.swift in Sources */,
 				3B4426CA2B8AC04A0008F3C2 /* AppDelegate.swift in Sources */,
+				3B44272A2B8FC7F80008F3C2 /* UserPostView.swift in Sources */,
 				3B44270C2B8E19A00008F3C2 /* Coordinator.swift in Sources */,
 				3B4427262B8F69270008F3C2 /* NoDataView.swift in Sources */,
 				3B4426CC2B8AC04A0008F3C2 /* SceneDelegate.swift in Sources */,

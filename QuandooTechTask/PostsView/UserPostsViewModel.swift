@@ -9,10 +9,10 @@ import Combine
 import Foundation
 import Services
 
-class UserPostsViewModel {
+class UserPostsViewModel: ObservableObject {
     var fetchingPostsStatus: AnyPublisher<FetchingStatus, Never> { fetchingPostsSubject.eraseToAnyPublisher() }
+    @Published private(set) var posts: [Post] = []
     private let fetchingPostsSubject = PassthroughSubject<FetchingStatus, Never>()
-    private(set) var posts: [Post] = []
     private let service: ServiceManaging
     private var userId: Int
     
@@ -35,11 +35,13 @@ class UserPostsViewModel {
         service.fetchData(for: .posts(userId), completion: { [unowned self] (result: Result<[Services.Post], APIError>) in
             switch result {
             case .success(let response):
-                let posts = response.map { Post.init(user: $0) }
-                self.posts = posts
-                posts.isEmpty
-                ? fetchingPostsSubject.send(.empty)
-                : fetchingPostsSubject.send(.fetched)
+                DispatchQueue.main.async {
+                    let posts = response.map { Post.init(user: $0) }
+                    self.posts = posts
+                    posts.isEmpty
+                    ? self.fetchingPostsSubject.send(.empty)
+                    : self.fetchingPostsSubject.send(.fetched)
+                }
             case .failure:
                 fetchingPostsSubject.send(.error)
             }

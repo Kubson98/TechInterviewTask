@@ -14,7 +14,7 @@ class NoDataView: UIView {
         label.textAlignment = .center
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.numberOfLines = 0 // Allow multiple lines for the title
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -73,9 +73,9 @@ class NoDataViewController: UIViewController {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.numberOfLines = 0 // Allow multiple lines for the title
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -97,15 +97,15 @@ class NoDataViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.addSubview(titleLabel)
         view.addSubview(refreshButton)
         
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20), // Adjust vertical position
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
             refreshButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            refreshButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20) // Adjust vertical position
+            refreshButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20)
         ])
     }
     

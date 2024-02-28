@@ -7,6 +7,7 @@
 
 import Combine
 import UIKit
+import SwiftUI
 
 class UserPostsViewController: UIViewController {
     weak var coordinator: MainCoordinator?
@@ -26,25 +27,28 @@ class UserPostsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpNavigationItems()
-        setupTableView()
         configureRefreshControl()
         fetchData()
-    }
-    
-    override func loadView() {
-        self.view = tableView
+        navigationItem.title = "Posts"
+        let swiftUIView = UserPostView(viewModel: viewModel, backButtonTapped: { [weak self] in self?.coordinator?.back() })
+        let hostingController = UIHostingController(rootView: swiftUIView)
+        addChild(hostingController)
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(hostingController.view)
+        
+        NSLayoutConstraint.activate([
+            hostingController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        hostingController.didMove(toParent: self)
     }
     
     private func fetchData() {
         subscribeToFetchingPostsStatus()
         viewModel.fetchPosts()
-    }
-    
-    private func setUpNavigationItems() {
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
-        navigationItem.leftBarButtonItem = backButton
-        navigationItem.title = "Posts"
     }
     
     private func configureRefreshControl() {
@@ -62,7 +66,6 @@ class UserPostsViewController: UIViewController {
             self?.tableView.refreshControl?.endRefreshing()
         }
     }
-    
     
     private func setupTableView() {
         tableView.frame = view.bounds

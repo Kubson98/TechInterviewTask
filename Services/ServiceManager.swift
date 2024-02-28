@@ -33,7 +33,7 @@ public class ServiceManager: ServiceManaging {
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in            
-            if let error = error {
+            if error != nil {
                 completion(.failure(.networkError))
                 return
             }
