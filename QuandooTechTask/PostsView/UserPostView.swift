@@ -10,26 +10,36 @@ import Services
 
 struct UserPostView: View {
     @ObservedObject var viewModel: UserPostsViewModel
-    var backButtonTapped: () -> ()
     var body: some View {
         VStack {
-            ScrollView {
-                ForEach(viewModel.posts, id: \.id) { post in
-                    LargeCell(
-                        viewModel: post
-                    )
+            switch viewModel.fetchingStatus {
+            case .fetched:
+                ScrollView {
+                    ForEach(viewModel.posts, id: \.id) { post in
+                        PostCell(
+                            viewModel: post
+                        )
+                    }
+                }.refreshable {
+                    viewModel.fetchPosts()
                 }
-            }.refreshable {
-                viewModel.fetchPosts()
+                .padding(.bottom)
+            case .loading:
+                ProgressView()
+                    .scaleEffect(1.0, anchor: .center)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .yellow))
+            case .empty:
+                InfoView(action: { viewModel.fetchPosts() }, type: .noData)
+            case .error:
+                InfoView(action: { viewModel.fetchPosts() }, type: .error)
             }
-            .padding(.bottom)
         }
         .background(.black)
+        .navigationTitle("Posts")
     }
 }
 
-
-fileprivate struct LargeCell: View {
+fileprivate struct PostCell: View {
     let viewModel: Post
     
     var body: some View {

@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
         super.loadView()
         view = tableView
     }
-        
+    
     private func setUpTableView() {
         tableView.backgroundColor = .black
         tableView.frame = view.bounds
@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
             for: .valueChanged
         )
     }
-        
+    
     @objc func handleRefreshControl() {
         DispatchQueue.main.async { [weak self] in
             self?.viewModel.fetchUsers()
@@ -98,7 +98,7 @@ class HomeViewController: UIViewController {
         let child = NoDataViewController()
         child.setTitle("No Users")
         child.buttonAction = { [weak self] in
-                self?.viewModel.fetchUsers()
+            self?.viewModel.fetchUsers()
         }
         addChild(child)
         child.view.frame = view.frame
@@ -126,7 +126,7 @@ class HomeViewController: UIViewController {
         pleaseAssessAlert.addAction(.init(title: "Dismiss", style: .cancel))
         present(pleaseAssessAlert, animated: true, completion: nil)
     }
- }
+}
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(

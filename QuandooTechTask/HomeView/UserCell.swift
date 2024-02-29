@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-        
+    
     private lazy var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -185,17 +185,18 @@ class CustomTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-        
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
+        setUpViews()
+        setUpConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
-    private func setupViews() {
+    
+    private func setUpViews() {
         addSubview(containerView)
         containerView.addSubview(contentStackView)
         contentStackView.addArrangedSubview(nameContentStackView)
@@ -222,7 +223,9 @@ class CustomTableViewCell: UITableViewCell {
         emailContentStackView.addArrangedSubview(emailLabelContentStackView)
         emailLabelContentStackView.addArrangedSubview(emailLabel)
         emailLabelContentStackView.addArrangedSubview(emailValueLabel)
-                
+    }
+    
+    private func setUpConstraints() {
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
@@ -233,28 +236,28 @@ class CustomTableViewCell: UITableViewCell {
             contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8),
             contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
             contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
-
+            
             nameContentStackView.widthAnchor.constraint(lessThanOrEqualTo: contentStackView.widthAnchor),
             nameContentStackView.heightAnchor.constraint(lessThanOrEqualTo: contentStackView.heightAnchor),
-
+            
             nameImage.widthAnchor.constraint(equalToConstant: 30),
-      
+            
             usernameContentStackView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor),
             usernameContentStackView.heightAnchor.constraint(lessThanOrEqualTo: contentStackView.heightAnchor),
-
+            
             usernameImage.widthAnchor.constraint(equalToConstant: 30),
             
             emailContentStackView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor),
             emailContentStackView.heightAnchor.constraint(lessThanOrEqualTo: contentStackView.heightAnchor),
             emailImage.widthAnchor.constraint(equalToConstant: 30),
-
+            
             addressContentStackView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor),
             addressContentStackView.heightAnchor.constraint(lessThanOrEqualTo: contentStackView.heightAnchor),
-
+            
             addressImage.widthAnchor.constraint(equalToConstant: 30),
         ])
     }
-        
+    
     func configure(with user: User) {
         containerView.backgroundColor = UIColor(red: 0.19, green: 0.18, blue: 0.11, alpha: 1.00)
         nameLabel.text = "Name"

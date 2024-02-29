@@ -5,20 +5,22 @@
 //  Created by Jakub Sędal on 27/02/2024.
 //
 
-import Combine
 import Foundation
 import Services
 
 class UserPostsViewModel: ObservableObject {
-    var fetchingPostsStatus: AnyPublisher<FetchingStatus, Never> { fetchingPostsSubject.eraseToAnyPublisher() }
     @Published private(set) var posts: [Post] = []
-    private let fetchingPostsSubject = PassthroughSubject<FetchingStatus, Never>()
+    @Published var fetchingStatus: FetchingStatus = .loading
     private let service: ServiceManaging
     private var userId: Int
     
-    init(userId: Int, service: ServiceManaging) {
+    init(
+        userId: Int,
+        service: ServiceManaging
+    ) {
         self.userId = userId
         self.service = service
+        fetchPosts()
     }
     
     func numberOfPosts() -> Int {
@@ -31,19 +33,19 @@ class UserPostsViewModel: ObservableObject {
     }
     
     func fetchPosts() {
-        fetchingPostsSubject.send(.loading)
-        service.fetchData(for: .posts(userId), completion: { [unowned self] (result: Result<[Services.Post], APIError>) in
+        fetchingStatus = .loading
+        service.fetchData(for: .posts(userId), completion: { [weak self] (result: Result<[Services.Post], APIError>) in
             switch result {
             case .success(let response):
+                let posts = response.map { Post.init(user: $0) }
                 DispatchQueue.main.async {
-                    let posts = response.map { Post.init(user: $0) }
-                    self.posts = posts
-                    posts.isEmpty
-                    ? self.fetchingPostsSubject.send(.empty)
-                    : self.fetchingPostsSubject.send(.fetched)
+                    self?.posts = posts
+                    self?.fetchingStatus = posts.isEmpty ? .empty : .fetched
                 }
             case .failure:
-                fetchingPostsSubject.send(.error)
+                DispatchQueue.main.async {
+                    self?.fetchingStatus = .error
+                }
             }
         })
     }

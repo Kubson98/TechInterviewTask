@@ -92,15 +92,18 @@ class NoDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        setupButton()
+        setUpViews()
+        setUpConstraints()
+        setUpButton()
     }
     
-    private func setupView() {
+    private func setUpViews() {
         view.backgroundColor = .black
         view.addSubview(titleLabel)
         view.addSubview(refreshButton)
-        
+    }
+    
+    private func setUpConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -20),
@@ -109,7 +112,7 @@ class NoDataViewController: UIViewController {
         ])
     }
     
-    private func setupButton() {
+    private func setUpButton() {
         refreshButton.addTarget(self, action: #selector(refreshButtonTapped), for: .touchUpInside)
     }
     
