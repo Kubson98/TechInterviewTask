@@ -22,13 +22,9 @@ public class ServiceManagerMock: ServiceManaging {
         case (_, true):
             completion(.failure(.networkError))
         case (.posts(_), false):
-            expectedPostsResult.isEmpty
-            ? completion(.failure(.noData))
-            : completion(.success(expectedPostsResult as! [T]))
+            completion(.success(expectedPostsResult as! [T]))
         case (.users, false):
-            expectedUsersResult.isEmpty
-            ? completion(.failure(.noData))
-            : completion(.success(expectedUsersResult as! [T]))
+            completion(.success(expectedUsersResult as! [T]))
         }
     }
 }
