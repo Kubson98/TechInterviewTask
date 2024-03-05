@@ -27,12 +27,13 @@
 		3B44270C2B8E19A00008F3C2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44270B2B8E19A00008F3C2 /* Coordinator.swift */; };
 		3B44270E2B8E23690008F3C2 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44270D2B8E23690008F3C2 /* Dependencies.swift */; };
 		3B4427102B8E35910008F3C2 /* UserPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B44270F2B8E35910008F3C2 /* UserPostsViewModel.swift */; };
-		3B4427212B8F1FC10008F3C2 /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427202B8F1FC10008F3C2 /* HomeViewModelTest.swift */; };
+		3B4427212B8F1FC10008F3C2 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427202B8F1FC10008F3C2 /* HomeViewModelTests.swift */; };
 		3B4427262B8F69270008F3C2 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427252B8F69260008F3C2 /* NoDataView.swift */; };
 		3B4427282B8F6D1F0008F3C2 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427272B8F6D1E0008F3C2 /* SpinnerViewController.swift */; };
-		3B44272A2B8FC7F80008F3C2 /* UserPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427292B8FC7F80008F3C2 /* UserPostView.swift */; };
+		3B44272A2B8FC7F80008F3C2 /* UserPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4427292B8FC7F80008F3C2 /* UserPostsView.swift */; };
 		3B5D9A8D2B90819D00173C98 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D9A8C2B90819D00173C98 /* InfoView.swift */; };
 		3B5D9A8F2B90879E00173C98 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D9A8E2B90879E00173C98 /* Mocks.swift */; };
+		3BDC8C282B979BBE00362B27 /* UserPostsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC8C272B979BBE00362B27 /* UserPostsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,12 +90,13 @@
 		3B44270D2B8E23690008F3C2 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		3B44270F2B8E35910008F3C2 /* UserPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsViewModel.swift; sourceTree = "<group>"; };
 		3B4427172B8F1F8A0008F3C2 /* QuandooTechTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuandooTechTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4427202B8F1FC10008F3C2 /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
+		3B4427202B8F1FC10008F3C2 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		3B4427252B8F69260008F3C2 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		3B4427272B8F6D1E0008F3C2 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
-		3B4427292B8FC7F80008F3C2 /* UserPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostView.swift; sourceTree = "<group>"; };
+		3B4427292B8FC7F80008F3C2 /* UserPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsView.swift; sourceTree = "<group>"; };
 		3B5D9A8C2B90819D00173C98 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		3B5D9A8E2B90879E00173C98 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		3BDC8C272B979BBE00362B27 /* UserPostsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				3B44270F2B8E35910008F3C2 /* UserPostsViewModel.swift */,
-				3B4427292B8FC7F80008F3C2 /* UserPostView.swift */,
+				3B4427292B8FC7F80008F3C2 /* UserPostsView.swift */,
 				3B5D9A8C2B90819D00173C98 /* InfoView.swift */,
 			);
 			path = PostsView;
@@ -215,8 +217,9 @@
 		3B4427182B8F1F8A0008F3C2 /* QuandooTechTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				3B4427202B8F1FC10008F3C2 /* HomeViewModelTest.swift */,
+				3B4427202B8F1FC10008F3C2 /* HomeViewModelTests.swift */,
 				3B5D9A8E2B90879E00173C98 /* Mocks.swift */,
+				3BDC8C272B979BBE00362B27 /* UserPostsViewModelTests.swift */,
 			);
 			path = QuandooTechTaskTests;
 			sourceTree = "<group>";
@@ -373,7 +376,7 @@
 				3B4427022B8CC7630008F3C2 /* User+Extension.swift in Sources */,
 				3B4426CE2B8AC04A0008F3C2 /* HomeViewController.swift in Sources */,
 				3B4426CA2B8AC04A0008F3C2 /* AppDelegate.swift in Sources */,
-				3B44272A2B8FC7F80008F3C2 /* UserPostView.swift in Sources */,
+				3B44272A2B8FC7F80008F3C2 /* UserPostsView.swift in Sources */,
 				3B44270C2B8E19A00008F3C2 /* Coordinator.swift in Sources */,
 				3B4427262B8F69270008F3C2 /* NoDataView.swift in Sources */,
 				3B4426CC2B8AC04A0008F3C2 /* SceneDelegate.swift in Sources */,
@@ -397,7 +400,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B4427212B8F1FC10008F3C2 /* HomeViewModelTest.swift in Sources */,
+				3B4427212B8F1FC10008F3C2 /* HomeViewModelTests.swift in Sources */,
+				3BDC8C282B979BBE00362B27 /* UserPostsViewModelTests.swift in Sources */,
 				3B5D9A8F2B90879E00173C98 /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +689,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93284K68YD;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Sedal.QuandooTechTaskTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -703,6 +708,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93284K68YD;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Sedal.QuandooTechTaskTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

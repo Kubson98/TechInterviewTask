@@ -36,7 +36,8 @@ final class HomeViewModelTests: XCTestCase {
         // when
         sut.fetchUsers()
         // then
-        XCTAssertTrue(service.didFetchDataCallCount == 1)
+        assert(service.didFetchDataCallCount == 1)
+        XCTAssertTrue(service.didFetchDataCalled == true)
     }
     
     func testFetchUsers_whenDataExist_statusShouldBeFetched() throws {
@@ -49,8 +50,25 @@ final class HomeViewModelTests: XCTestCase {
         }.store(in: &usersCancellables)
         sut.fetchUsers()
         // then
-        assert(sut.userRowData(at: 0)?.name == "John Doe")
         XCTAssertTrue(finalStatus == .fetched)
+    }
+    
+    func testFetchUsers_whenDataExist_nameOfUserShouldBeAsExpected() throws {
+        // given
+        service.expectedUsersResult = [.mock]
+        // when
+        sut.fetchUsers()
+        // then
+        assert(sut.userRowData(at: 0)?.name == "John Doe")
+    }
+    
+    func testFetchUsers_whenDataExist_numberOfUsersShouldBeOne() throws {
+        // given
+        service.expectedUsersResult = [.mock]
+        // when
+        sut.fetchUsers()
+        // then
+        assert(sut.numberOfUsers() == 1)
     }
     
     func testFetchUsers_whenDataDoesNotExist_statusShouldBeEmpty() throws {
@@ -63,11 +81,28 @@ final class HomeViewModelTests: XCTestCase {
         }.store(in: &usersCancellables)
         sut.fetchUsers()
         // then
-        assert(sut.userRowData(at: 0) == nil)
         XCTAssertTrue(finalStatus == .empty)
     }
     
-    func testFetchUsers_whenProblemWithConnectionExist_statusShouldBeError() throws {
+    func testFetchUsers_whenDataDoesNotExist_userRowDataShouldBeNil() throws {
+        // given
+        service.expectedUsersResult = []
+        // when
+        sut.fetchUsers()
+        // then
+        assert(sut.userRowData(at: 0) == nil)
+    }
+    
+    func testFetchUsers_whenDataDoesNotExist_numberOfUsersShouldBeZero() throws {
+        // given
+        service.expectedUsersResult = []
+        // when
+        sut.fetchUsers()
+        // then
+        assert(sut.numberOfUsers() == 0)
+    }
+    
+    func testFetchUsers_whenProblemWithFetchingExists_statusShouldBeError() throws {
         // given
         service.expectedUsersResult = []
         service.shouldFail = true
@@ -78,7 +113,26 @@ final class HomeViewModelTests: XCTestCase {
         }.store(in: &usersCancellables)
         sut.fetchUsers()
         // then
-        assert(sut.userRowData(at: 0) == nil)
         assert(finalStatus == .error)
+    }
+    
+    func testFetchUsers_whenProblemWithFetchingExists_userRowDataShouldBeNil() throws {
+        // given
+        service.expectedUsersResult = []
+        service.shouldFail = true
+        // when
+        sut.fetchUsers()
+        // then
+        assert(sut.userRowData(at: 0) == nil)
+    }
+    
+    func testFetchUsers_whenProblemWithFetchingExists_numberOfUsersShouldBeZero() throws {
+        // given
+        service.expectedUsersResult = []
+        service.shouldFail = true
+        // when
+        sut.fetchUsers()
+        // then
+        assert(sut.numberOfUsers() == 0)
     }
 }

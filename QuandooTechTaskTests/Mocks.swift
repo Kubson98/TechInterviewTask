@@ -59,4 +59,15 @@ extension Services.User {
         )
     }
 }
+
+extension Services.Post {
+    static var mock: Services.Post {
+        self.init(
+            userId: 1,
+            id: 1,
+            title: "Title",
+            body: "Body"
+        )
+    }
+}
     

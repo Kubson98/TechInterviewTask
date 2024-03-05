@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "CustomCell")
+        tableView.register(UserCell.self, forCellReuseIdentifier: "CustomCell")
     }
     
     private func configureRefreshControl() {
@@ -140,9 +140,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "CustomCell",
             for: indexPath
-        ) as! CustomTableViewCell
+        ) as! UserCell
         if let rowData = viewModel.userRowData(at: indexPath.row) {
             cell.configure(with: rowData)
+            cell.selectionStyle = .none
         }
         return cell
     }

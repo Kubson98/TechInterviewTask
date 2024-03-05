@@ -25,4 +25,11 @@ public struct Post: Decodable {
         self.title = try container.decode(String.self, forKey: .title)
         self.body = try container.decode(String.self, forKey: .body)
     }
+    
+    init(userId: Int, id: Int, title: String, body: String) {
+        self.userId = userId
+        self.id = id
+        self.title = title
+        self.body = body
+    }
 }

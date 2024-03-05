@@ -1,5 +1,5 @@
 //
-//  UserPostView.swift
+//  UserPostsView.swift
 //  QuandooTechTask
 //
 //  Created by Jakub Sędal on 28/02/2024.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Services
 
-struct UserPostView: View {
+struct UserPostsView: View {
     @ObservedObject var viewModel: UserPostsViewModel
     var body: some View {
         VStack {

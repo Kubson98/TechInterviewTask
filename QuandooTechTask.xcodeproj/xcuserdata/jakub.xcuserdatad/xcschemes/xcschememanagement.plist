@@ -6,13 +6,35 @@
 	<dict>
 		<key>QuandooTechTask.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 		<key>Services.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>3B4426C52B8AC04A0008F3C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B4426F02B8CC20A0008F3C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B4427162B8F1F8A0008F3C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

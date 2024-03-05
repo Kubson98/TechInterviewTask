@@ -34,11 +34,10 @@ class MainCoordinator: Coordinator {
     
     func buildUserPostsController(userId: Int) {
         let viewModel = UserPostsViewModel(userId: userId, service: dependencies.manager)
-        let swiftUIView =
-        UserPostView(
+        let view = UserPostsView(
             viewModel: viewModel
         )
-        let hostingController = UIHostingController(rootView: swiftUIView)
+        let hostingController = UIHostingController(rootView: view)
         navigationController.pushViewController(hostingController, animated: true)
     }
 }

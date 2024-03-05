@@ -7,8 +7,7 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
-    
+class UserCell: UITableViewCell {
     private lazy var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
