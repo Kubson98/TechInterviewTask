@@ -158,8 +158,6 @@
 				3B4426D22B8AC04F0008F3C2 /* Assets.xcassets */,
 				3B4426D42B8AC04F0008F3C2 /* LaunchScreen.storyboard */,
 				3B4426D72B8AC04F0008F3C2 /* Info.plist */,
-				3B4427252B8F69260008F3C2 /* NoDataView.swift */,
-				3B4427272B8F6D1E0008F3C2 /* SpinnerViewController.swift */,
 			);
 			path = QuandooTechTask;
 			sourceTree = "<group>";
@@ -197,6 +195,8 @@
 		3B4427112B8E4B2D0008F3C2 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				3B4427252B8F69260008F3C2 /* NoDataView.swift */,
+				3B4427272B8F6D1E0008F3C2 /* SpinnerViewController.swift */,
 				3B4426CD2B8AC04A0008F3C2 /* HomeViewController.swift */,
 				3B4426E42B8ACF680008F3C2 /* HomeViewModel.swift */,
 				3B4426E02B8AC7D40008F3C2 /* UserCell.swift */,
