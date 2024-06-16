@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     private let tableView = UITableView()
     private let viewModel: HomeViewModel
     private var usersCancellables = Set<AnyCancellable>()
-    private let loadingViewController = SpinnerViewController()
+    private let loadingViewController = LoadingViewController()
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -133,7 +133,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return viewModel.numberOfUsers()
+        return viewModel.users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,17 +141,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             withIdentifier: "CustomCell",
             for: indexPath
         ) as! UserCell
-        if let rowData = viewModel.userRowData(at: indexPath.row) {
-            cell.configure(with: rowData)
-            cell.selectionStyle = .none
-        }
+        let rowData = viewModel.users[indexPath.row]
+        cell.configure(with: rowData)
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let rowData = viewModel.userRowData(at: indexPath.row) {
-            coordinator?.buildUserPostsController(userId: rowData.id)
-        }
+        let rowData = viewModel.users[indexPath.row]
+        coordinator?.buildUserPostsController(userId: rowData.id)
     }
 }

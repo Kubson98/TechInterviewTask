@@ -62,7 +62,7 @@ final class UserPostsViewModelTests: XCTestCase {
         sut.fetchPosts()
         // then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            assert(self?.sut.postRowData(at: 0)?.body == "Body")
+            assert(self?.sut.posts[0].body == "Body")
         }
     }
     
@@ -73,7 +73,7 @@ final class UserPostsViewModelTests: XCTestCase {
         sut.fetchPosts()
         // then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            assert(self?.sut.numberOfPosts() == 1)
+            assert(self?.sut.posts.count == 1)
         }
     }
     
@@ -95,7 +95,7 @@ final class UserPostsViewModelTests: XCTestCase {
         sut.fetchPosts()
         // then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            assert(self?.sut.postRowData(at: 0) == nil)
+            assert(self?.sut.posts[0] == nil)
         }
     }
     func testFetchPosts_whenDataDoesNotExist_numberOfPostsShouldBeZero() throws {
@@ -105,7 +105,7 @@ final class UserPostsViewModelTests: XCTestCase {
         sut.fetchPosts()
         // then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            assert(self?.sut.numberOfPosts() == 0)
+            assert(self?.sut.posts.count == 0)
         }
     }
     
@@ -129,7 +129,7 @@ final class UserPostsViewModelTests: XCTestCase {
         sut.fetchPosts()
         // then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            assert(self?.sut.postRowData(at: 0) == nil)
+            assert(self?.sut.posts[0] == nil)
         }
     }
     
@@ -141,7 +141,7 @@ final class UserPostsViewModelTests: XCTestCase {
         sut.fetchPosts()
         // then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            assert(self?.sut.numberOfPosts() == 0)
+            assert(self?.sut.posts.count == 0)
         }
     }
 }

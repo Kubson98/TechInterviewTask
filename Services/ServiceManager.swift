@@ -7,20 +7,6 @@
 
 import Foundation
 
-public enum FetchingType {
-    case users
-    case posts(Int)
-    
-    var url: URL? {
-        switch self {
-        case .users:
-            return URL(string: "https://jsonplaceholder.typicode.com/users")
-        case .posts(let userId):
-            return URL(string: "https://jsonplaceholder.typicode.com/posts?userId=\(userId)")
-        }
-    }
-}
-
 public protocol ServiceManaging {
     func fetchData<T: Decodable>(for fetchingType: FetchingType, completion: @escaping (Result<[T], APIError>) -> Void)
 }

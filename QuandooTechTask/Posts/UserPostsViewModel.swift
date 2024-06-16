@@ -23,15 +23,6 @@ class UserPostsViewModel: ObservableObject {
         fetchPosts()
     }
     
-    func numberOfPosts() -> Int {
-        return posts.count
-    }
-    
-    func postRowData(at index: Int) -> Post? {
-        guard index >= 0 && index < numberOfPosts() else { return nil }
-        return posts[index]
-    }
-    
     func fetchPosts() {
         fetchingStatus = .loading
         service.fetchData(for: .posts(userId), completion: { [weak self] (result: Result<[Services.Post], APIError>) in

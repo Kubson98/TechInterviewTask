@@ -59,7 +59,7 @@ final class HomeViewModelTests: XCTestCase {
         // when
         sut.fetchUsers()
         // then
-        assert(sut.userRowData(at: 0)?.name == "John Doe")
+        assert(sut.users[0].name == "John Doe")
     }
     
     func testFetchUsers_whenDataExist_numberOfUsersShouldBeOne() throws {
@@ -68,7 +68,7 @@ final class HomeViewModelTests: XCTestCase {
         // when
         sut.fetchUsers()
         // then
-        assert(sut.numberOfUsers() == 1)
+        assert(sut.users.count == 1)
     }
     
     func testFetchUsers_whenDataDoesNotExist_statusShouldBeEmpty() throws {
@@ -84,13 +84,13 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertTrue(finalStatus == .empty)
     }
     
-    func testFetchUsers_whenDataDoesNotExist_userRowDataShouldBeNil() throws {
+    func testFetchUsers_whenDataDoesNotExist_usersDataShouldBeEmpty() throws {
         // given
         service.expectedUsersResult = []
         // when
         sut.fetchUsers()
         // then
-        assert(sut.userRowData(at: 0) == nil)
+        XCTAssertTrue(sut.users.isEmpty )
     }
     
     func testFetchUsers_whenDataDoesNotExist_numberOfUsersShouldBeZero() throws {
@@ -99,7 +99,7 @@ final class HomeViewModelTests: XCTestCase {
         // when
         sut.fetchUsers()
         // then
-        assert(sut.numberOfUsers() == 0)
+        assert(sut.users.count == 0)
     }
     
     func testFetchUsers_whenProblemWithFetchingExists_statusShouldBeError() throws {
@@ -116,14 +116,14 @@ final class HomeViewModelTests: XCTestCase {
         assert(finalStatus == .error)
     }
     
-    func testFetchUsers_whenProblemWithFetchingExists_userRowDataShouldBeNil() throws {
+    func testFetchUsers_whenProblemWithFetchingExists_usersDataShouldBeEmpty() throws {
         // given
         service.expectedUsersResult = []
         service.shouldFail = true
         // when
         sut.fetchUsers()
         // then
-        assert(sut.userRowData(at: 0) == nil)
+        XCTAssertTrue(sut.users.isEmpty)
     }
     
     func testFetchUsers_whenProblemWithFetchingExists_numberOfUsersShouldBeZero() throws {
@@ -133,6 +133,6 @@ final class HomeViewModelTests: XCTestCase {
         // when
         sut.fetchUsers()
         // then
-        assert(sut.numberOfUsers() == 0)
+        assert(sut.users.count == 0)
     }
 }

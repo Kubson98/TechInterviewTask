@@ -195,6 +195,18 @@ class UserCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure(with user: User) {
+        containerView.backgroundColor = UIColor(red: 0.19, green: 0.18, blue: 0.11, alpha: 1.00)
+        nameLabel.text = "Name"
+        nameValueLabel.text = user.name
+        usernameLabel.text = "User Name"
+        usernameValueLabel.text = user.username
+        emailLabel.text = "Email"
+        emailValueLabel.text = user.email
+        addressLabel.text = "Address"
+        addressValueLabel.text = user.address
+    }
+    
     private func setUpViews() {
         addSubview(containerView)
         containerView.addSubview(contentStackView)
@@ -255,17 +267,5 @@ class UserCell: UITableViewCell {
             
             addressImage.widthAnchor.constraint(equalToConstant: 30),
         ])
-    }
-    
-    func configure(with user: User) {
-        containerView.backgroundColor = UIColor(red: 0.19, green: 0.18, blue: 0.11, alpha: 1.00)
-        nameLabel.text = "Name"
-        nameValueLabel.text = user.name
-        usernameLabel.text = "User Name"
-        usernameValueLabel.text = user.username
-        emailLabel.text = "Email"
-        emailValueLabel.text = user.email
-        addressLabel.text = "Address"
-        addressValueLabel.text = user.address
     }
 }

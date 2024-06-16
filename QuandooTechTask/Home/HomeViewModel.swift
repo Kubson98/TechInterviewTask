@@ -17,23 +17,16 @@ enum FetchingStatus {
 }
 
 class HomeViewModel {
-    var fetchingClientsStatus: AnyPublisher<FetchingStatus, Never> { fetchingClientsSubject.eraseToAnyPublisher() }
+    var fetchingClientsStatus: AnyPublisher<FetchingStatus, Never> { 
+        fetchingClientsSubject.eraseToAnyPublisher()
+    }
     private let fetchingClientsSubject = PassthroughSubject<FetchingStatus, Never>()
-    private var users: [User] = []
+    private(set) var users: [User] = []
     private let service: ServiceManaging
     
     init(users: [User] = [], service: ServiceManaging) {
         self.users = users
         self.service = service
-    }
-    
-    func numberOfUsers() -> Int {
-        return users.count
-    }
-    
-    func userRowData(at index: Int) -> User? {
-        guard index >= 0 && index < numberOfUsers() else { return nil }
-        return users[index]
     }
     
     func fetchUsers() {

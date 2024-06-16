@@ -41,7 +41,6 @@ struct UserPostsView: View {
 
 fileprivate struct PostCell: View {
     let viewModel: Post
-    
     var body: some View {
         HStack {
             HStack(alignment: .center, spacing: 16) {
